@@ -87,7 +87,10 @@ def add_to_order(item):
 
 
 def complete_order():
-    driver.find_element_by_xpath('//*[@id="full_name"]').send_keys()
+    time.sleep(3)
+    driver.find_element_by_xpath('//*[@id="full_name"]').send_keys(db.get("name"))
+    driver.find_element_by_id('//*[@id="phone"]').send_keys(db.get("phone"))
+    driver.find_element_by_id('//*[@id="email"]').send_keys(db.get("email"))
 
 
 def select_button_by_link_text(text):
