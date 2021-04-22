@@ -87,10 +87,26 @@ def add_to_order(item):
 
 
 def complete_order():
-    time.sleep(3)
     driver.find_element_by_xpath('//*[@id="full_name"]').send_keys(db.get("name"))
-    driver.find_element_by_id('//*[@id="phone"]').send_keys(db.get("phone"))
-    driver.find_element_by_id('//*[@id="email"]').send_keys(db.get("email"))
+    driver.find_element_by_xpath('//*[@id="phone"]').send_keys(db.get("phone"))
+    driver.find_element_by_xpath('//*[@id="email"]').send_keys(db.get("email"))
+    driver.find_element_by_xpath('//*[@id="custom_field_suburb"]').send_keys(db.get("suburb"))
+    select_button_by_link_text("No tip")
+
+    iframe = driver.find_elements_by_tag_name('iframe')[0]
+    driver.switch_to.frame(iframe)
+    driver.implicitly_wait(2)
+    driver.find_element_by_xpath('//*[@id="card_number"]').send_keys(db.get("card_number"))
+    driver.switch_to.default_content()
+
+    iframe = driver.find_elements_by_tag_name('iframe')[1]
+    driver.switch_to.frame(iframe)
+    driver.implicitly_wait(2)
+    driver.find_element_by_xpath('//*[@id="cvv"]').send_keys(db.get("cvv"))
+    driver.switch_to.default_content()
+
+    driver.find_element_by_xpath('//*[@id="month"]').send_keys(db.get("exp_month"))
+    driver.find_element_by_xpath('//*[@id="year"]').send_keys(db.get("exp_year"))
 
 
 def select_button_by_link_text(text):
