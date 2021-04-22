@@ -1,2 +1,2 @@
 # GoldenCrust
-An Upcoming API for my favorite Wood Oven pizza
+An Upcoming Script for ordering my favorite Wood Oven pizza
