@@ -107,6 +107,7 @@ def complete_order():
 
     driver.find_element_by_xpath('//*[@id="month"]').send_keys(db.get("exp_month"))
     driver.find_element_by_xpath('//*[@id="year"]').send_keys(db.get("exp_year"))
+    #select_button_by_link_text("Submit Order")
 
 
 def select_button_by_link_text(text):
