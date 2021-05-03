@@ -61,8 +61,9 @@ def fill_address_details():
 def get_order():
     driver.find_element_by_partial_link_text('Meal Combos').click()
     time.sleep(1)
-    driver.find_element_by_xpath(meal.ME.value).click()
+    driver.find_element_by_xpath(meal.FAMILY.value).click()
     add_to_order(pizza.MEATLOVERS)
+    add_to_order(pizza.PEPPERONI)
     add_to_order(sides.GARLICBREAD)
     add_to_order(drinks.PEPSIMAX)
     time.sleep(5)
@@ -107,7 +108,7 @@ def complete_order():
 
     driver.find_element_by_xpath('//*[@id="month"]').send_keys(db.get("exp_month"))
     driver.find_element_by_xpath('//*[@id="year"]').send_keys(db.get("exp_year"))
-    select_button_by_link_text('Submit Order')
+    driver.find_element_by_xpath('//*[@id="checkout-form"]/div[3]/button').click()
 
 
 def select_button_by_link_text(text):
