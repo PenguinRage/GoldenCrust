@@ -1,4 +1,4 @@
 venv
 .idea
 *.json
-chromedriver
+app/chromedriver
