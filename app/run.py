@@ -65,7 +65,7 @@ def get_order():
     driver.find_element_by_partial_link_text('Meal Combos').click()
     time.sleep(1)
     driver.find_element_by_xpath(meal.FAMILY.value).click()
-    add_to_order(pizza.MEATLOVERS)
+    add_to_order(pizza.SPICYCHICKEN)
     add_to_order(pizza.PEPPERONI)
     add_to_order(sides.GARLICBREAD)
     add_to_order(drinks.PEPSIMAX)
@@ -90,6 +90,7 @@ def complete_order():
     driver.find_element_by_xpath('//*[@id="custom_field_suburb"]').send_keys('Baulkham Hills')
     select_button_by_link_text("No tip")
     driver.find_element_by_xpath('//*[@id="checkout-form"]/div[3]/button').click()
+    print("Order complete")
 
 
 def select_button_by_link_text(text):
