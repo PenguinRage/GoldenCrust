@@ -1,2 +1,2 @@
 # GoldenCrust
-An Upcoming Script for ordering my favorite Wood Oven pizza
+A Script for ordering my favorite Wood Oven pizza
