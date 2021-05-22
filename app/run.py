@@ -65,7 +65,7 @@ def get_order():
     driver.find_element_by_partial_link_text('Meal Combos').click()
     time.sleep(1)
     driver.find_element_by_xpath(meal.FAMILY.value).click()
-    add_to_order(pizza.SPICYCHICKEN)
+    add_to_order(pizza.MEATLOVERS)
     add_to_order(pizza.PEPPERONI)
     add_to_order(sides.GARLICBREAD)
     add_to_order(drinks.PEPSIMAX)
