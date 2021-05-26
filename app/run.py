@@ -8,7 +8,7 @@ from enum import Enum
 # Chromedriver location: https://sites.google.com/a/chromium.org/chromedriver/
 # we need to freeze this.......
 import argparse
-from dao.bitwardenDAO import BitwardenDAO
+from app.dao.bitwardenDAO import BitwardenDAO
 from selenium.webdriver.support.ui import WebDriverWait
 
 
