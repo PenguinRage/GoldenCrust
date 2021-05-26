@@ -5,8 +5,8 @@ import subprocess
 class BitwardenDAO:
     SESSION = None
 
-    def __init__(self):
-        result = subprocess.run(['bw', 'unlock'],
+    def __init__(self, password=None):
+        result = subprocess.run(['bw', 'unlock', password],
                                 stdout=subprocess.PIPE)
         self.SESSION = str(result.stdout.split()[-1], 'utf-8')
 
