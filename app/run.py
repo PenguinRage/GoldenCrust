@@ -1,9 +1,13 @@
+import os
+
+from redis import Redis
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.common.exceptions import ElementClickInterceptedException, ElementNotInteractableException
 
 import time
 from enum import Enum
+import redis
 # Check version in Brave: brave://version/
 # Chromedriver location: https://sites.google.com/a/chromium.org/chromedriver/
 # we need to freeze this.......
@@ -17,7 +21,7 @@ brave_path = "/usr/lib/brave/brave"
 option = Options()
 option.binary_location = brave_path
 # option.add_argument("--incognito") OPTIONAL
-# option.add_argument("--headless")
+option.add_argument("--headless")
 
 
 # Todo: Move this logic else where. Responsibility could be given to a builder
@@ -45,7 +49,10 @@ class drinks(Enum):
 def fill_address_details():
     driver.get('https://orders.eatapp.online/menu/golden-crust-baulkham-hills#ordering-for-prompt')
     try:
-        credentials = BitwardenDAO.get_item('b4651e5a-157a-45b0-84e6-ad1e00d1a8f5')
+        redis = Redis(host="server.local", password=os.environ['REDISCLI_AUTH'])
+        bw = BitwardenDAO(redis.get('bw_password'))
+        redis.close()
+        credentials = bw.get_item('b4651e5a-157a-45b0-84e6-ad1e00d1a8f5')
         driver.find_element_by_xpath('//*[@id="menu-app"]/div[7]/div/div/div/div/button').click()
         driver.implicitly_wait(10)
         driver.find_element_by_xpath('/html/body/div[1]/div[7]/div/div/div/div/form/div[2]/input').send_keys(credentials['login']['username'])
